@@ -11,9 +11,17 @@ from io import BytesIO
 from PIL import Image
 
 from rdkit import Chem
-from rdkit.Chem import Draw
 from rdkit.Chem import AllChem
-from rdkit.Chem.Draw import rdMolDraw2D
+
+# Robust import for headless Linux servers (Streamlit Cloud, Docker) where libGL might be missing
+try:
+    from rdkit.Chem import Draw
+    from rdkit.Chem.Draw import rdMolDraw2D
+    HAS_DRAW = True
+except (ImportError, Exception):
+    Draw = None
+    rdMolDraw2D = None
+    HAS_DRAW = False
 
 
 def mol_to_2d_svg(
@@ -24,6 +32,7 @@ def mol_to_2d_svg(
 ) -> str:
     """
     Renders an RDKit Mol to a clean, scalable SVG string.
+    Gracefully falls back to SVG formula representation if graphics libraries are missing.
 
     Parameters
     ----------
@@ -41,6 +50,21 @@ def mol_to_2d_svg(
     str
         SVG XML markup string.
     """
+    if not HAS_DRAW or rdMolDraw2D is None:
+        try:
+            formula = Chem.rdMolDescriptors.CalcMolFormula(mol) if mol else "Molecule"
+            num_atoms = mol.GetNumAtoms() if mol else 0
+        except Exception:
+            formula = "Molecule"
+            num_atoms = 0
+        return (
+            f'<svg width="{width}" height="{height}" xmlns="http://www.w3.org/2000/svg" style="background: rgba(30, 41, 59, 0.4); border-radius: 8px;">'
+            f'<rect width="100%" height="100%" fill="none"/>'
+            f'<text x="50%" y="45%" text-anchor="middle" fill="#38bdf8" font-family="sans-serif" font-size="18" font-weight="bold">{formula}</text>'
+            f'<text x="50%" y="60%" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="12">{num_atoms} Atoms | 2D Depiction</text>'
+            f'</svg>'
+        )
+
     try:
         drawer = rdMolDraw2D.MolDraw2DSVG(width, height)
         opts = drawer.drawOptions()
@@ -90,6 +114,9 @@ def mol_to_2d_png(
     Optional[Image.Image]
         PIL Image or None if rendering fails.
     """
+    if not HAS_DRAW or Draw is None:
+        return None
+
     try:
         if not mol.GetNumConformers():
             AllChem.Compute2DCoords(mol)
