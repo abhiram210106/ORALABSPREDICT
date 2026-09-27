@@ -1,0 +1,104 @@
+{
+    "model_name": "CatBoost",
+    "endpoint": "Human Intestinal Absorption (HIA)",
+    "dataset_source": "Hou et al. (TDC Benchmark HIA_Hou)",
+    "training_date": "2026-09-27T21:09:27.554435",
+    "random_state": 42,
+    "feature_count": 706,
+    "target_column": "Y",
+    "classes": {
+        "0": "Low / Poor Intestinal Absorption (HIA-)",
+        "1": "High Intestinal Absorption (HIA+)"
+    },
+    "class_distribution_raw": {
+        "1": 500,
+        "0": 78
+    },
+    "dataset_size": 578,
+    "train_samples": 375,
+    "val_samples": 87,
+    "test_samples": 116,
+    "test_metrics": {
+        "accuracy": 0.9396551724137931,
+        "balanced_accuracy": 0.9125,
+        "precision": 0.979381443298969,
+        "recall": 0.95,
+        "f1": 0.9644670050761421,
+        "confusion_matrix": [
+            [
+                14,
+                2
+            ],
+            [
+                5,
+                95
+            ]
+        ],
+        "roc_auc": 0.984375,
+        "pr_auc": 0.9975840528652743
+    },
+    "validation_comparison": [
+        {
+            "Model": "CatBoost",
+            "Balanced Accuracy": 0.8966666666666667,
+            "F1-Score": 0.9664429530201343,
+            "ROC-AUC": 0.9655555555555556,
+            "PR-AUC": 0.9946377718185917,
+            "Recall (Sensitivity)": 0.96,
+            "Precision": 0.972972972972973,
+            "Accuracy": 0.9425287356321839
+        },
+        {
+            "Model": "Random Forest",
+            "Balanced Accuracy": 0.855,
+            "F1-Score": 0.96,
+            "ROC-AUC": 0.9600000000000001,
+            "PR-AUC": 0.9936444526609177,
+            "Recall (Sensitivity)": 0.96,
+            "Precision": 0.96,
+            "Accuracy": 0.9310344827586207
+        },
+        {
+            "Model": "Balanced Random Forest",
+            "Balanced Accuracy": 0.8416666666666667,
+            "F1-Score": 0.9459459459459459,
+            "ROC-AUC": 0.9422222222222222,
+            "PR-AUC": 0.990434795944608,
+            "Recall (Sensitivity)": 0.9333333333333333,
+            "Precision": 0.958904109589041,
+            "Accuracy": 0.9080459770114943
+        },
+        {
+            "Model": "Logistic Regression",
+            "Balanced Accuracy": 0.7783333333333333,
+            "F1-Score": 0.954248366013072,
+            "ROC-AUC": 0.951111111111111,
+            "PR-AUC": 0.9919097344761757,
+            "Recall (Sensitivity)": 0.9733333333333334,
+            "Precision": 0.9358974358974359,
+            "Accuracy": 0.9195402298850575
+        },
+        {
+            "Model": "LightGBM",
+            "Balanced Accuracy": 0.765,
+            "F1-Score": 0.9403973509933775,
+            "ROC-AUC": 0.9411111111111111,
+            "PR-AUC": 0.9907113924962633,
+            "Recall (Sensitivity)": 0.9466666666666667,
+            "Precision": 0.9342105263157895,
+            "Accuracy": 0.896551724137931
+        },
+        {
+            "Model": "Support Vector Machine",
+            "Balanced Accuracy": 0.7016666666666667,
+            "F1-Score": 0.9487179487179487,
+            "ROC-AUC": 0.9388888888888889,
+            "PR-AUC": 0.9894981007285479,
+            "Recall (Sensitivity)": 0.9866666666666667,
+            "Precision": 0.9135802469135802,
+            "Accuracy": 0.9080459770114943
+        }
+    ],
+    "model_file": "hia_model.pkl",
+    "feature_names_file": "hia_feature_names.pkl"
+}

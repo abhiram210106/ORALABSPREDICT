@@ -1,0 +1,104 @@
+{
+    "model_name": "CatBoost",
+    "endpoint": "Human Oral Bioavailability (HOB)",
+    "dataset_source": "Ma et al. (TDC Benchmark Bioavailability_Ma)",
+    "training_date": "2026-09-27T21:09:52.771061",
+    "random_state": 42,
+    "feature_count": 706,
+    "target_column": "Y",
+    "classes": {
+        "0": "Low / Poor Oral Bioavailability (HOB < 30%)",
+        "1": "High Oral Bioavailability (HOB >= 30%)"
+    },
+    "class_distribution_raw": {
+        "1": 492,
+        "0": 148
+    },
+    "dataset_size": 640,
+    "train_samples": 416,
+    "val_samples": 96,
+    "test_samples": 128,
+    "test_metrics": {
+        "accuracy": 0.7421875,
+        "balanced_accuracy": 0.5772108843537415,
+        "precision": 0.7981651376146789,
+        "recall": 0.8877551020408163,
+        "f1": 0.8405797101449275,
+        "confusion_matrix": [
+            [
+                8,
+                22
+            ],
+            [
+                11,
+                87
+            ]
+        ],
+        "roc_auc": 0.7425170068027211,
+        "pr_auc": 0.9052271659216616
+    },
+    "validation_comparison": [
+        {
+            "Model": "CatBoost",
+            "Balanced Accuracy": 0.6664619164619164,
+            "F1-Score": 0.8609271523178808,
+            "ROC-AUC": 0.6891891891891893,
+            "PR-AUC": 0.8752905216235136,
+            "Recall (Sensitivity)": 0.8783783783783784,
+            "Precision": 0.8441558441558441,
+            "Accuracy": 0.78125
+        },
+        {
+            "Model": "Logistic Regression",
+            "Balanced Accuracy": 0.6578624078624078,
+            "F1-Score": 0.8085106382978723,
+            "ROC-AUC": 0.7285012285012284,
+            "PR-AUC": 0.9029351847098664,
+            "Recall (Sensitivity)": 0.7702702702702703,
+            "Precision": 0.8507462686567164,
+            "Accuracy": 0.71875
+        },
+        {
+            "Model": "Random Forest",
+            "Balanced Accuracy": 0.6302211302211302,
+            "F1-Score": 0.84,
+            "ROC-AUC": 0.703931203931204,
+            "PR-AUC": 0.8737764364807494,
+            "Recall (Sensitivity)": 0.8513513513513513,
+            "Precision": 0.8289473684210527,
+            "Accuracy": 0.75
+        },
+        {
+            "Model": "LightGBM",
+            "Balanced Accuracy": 0.621007371007371,
+            "F1-Score": 0.8496732026143791,
+            "ROC-AUC": 0.6695331695331694,
+            "PR-AUC": 0.8582226087697051,
+            "Recall (Sensitivity)": 0.8783783783783784,
+            "Precision": 0.8227848101265823,
+            "Accuracy": 0.7604166666666666
+        },
+        {
+            "Model": "Balanced Random Forest",
+            "Balanced Accuracy": 0.6191646191646192,
+            "F1-Score": 0.8055555555555556,
+            "ROC-AUC": 0.6517199017199018,
+            "PR-AUC": 0.8539423460381681,
+            "Recall (Sensitivity)": 0.7837837837837838,
+            "Precision": 0.8285714285714286,
+            "Accuracy": 0.7083333333333334
+        },
+        {
+            "Model": "Support Vector Machine",
+            "Balanced Accuracy": 0.5663390663390663,
+            "F1-Score": 0.8481012658227848,
+            "ROC-AUC": 0.6732186732186732,
+            "PR-AUC": 0.8605554707079655,
+            "Recall (Sensitivity)": 0.9054054054054054,
+            "Precision": 0.7976190476190477,
+            "Accuracy": 0.75
+        }
+    ],
+    "model_file": "hob_model.pkl",
+    "feature_names_file": "hob_feature_names.pkl"
+}
